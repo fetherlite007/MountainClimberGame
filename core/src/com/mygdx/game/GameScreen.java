@@ -45,9 +45,24 @@ public class GameScreen extends ScreenAdapter {
 		if(Gdx.input.isKeyPressed(Keys.RIGHT)) {
             character.move(Character.DIRECTION_RIGHT);
 		}
-		if(Gdx.input.isKeyPressed(Keys.UP)) {
+		if(Gdx.input.isKeyPressed(Keys.UP)&&character.g==0) {
             character.g=1;
-            
+            Thread timer = new Thread(){
+		        @Override
+		        public void run() {
+		        	
+		            try {
+		                sleep(5000);//time in milliseconds
+		            } catch (InterruptedException e) {
+		                
+		                e.printStackTrace();
+		            } finally{
+		              
+		            }
+		            
+		        }
+		    };
+		    timer.start();
 		}
     }
 

@@ -3,8 +3,6 @@ package com.mygdx.game;
 import com.badlogic.gdx.math.Vector2;
 
 public class Character {
-	private int time;
-	public static boolean upKeyPress = false;
 	public static int g = 0;
 	public static Vector2 position;
 	public static final int DIRECTION_UP = 1;
@@ -20,8 +18,9 @@ public class Character {
         {-1,0}
     };
     public static final int SPEED = 4;
-    public static final int grav = 3;
-    
+    public static final int GRAV = 4;
+    public static final int JUMP = 5;
+    public static final int SLEEP = 500;
     
     public Character(int x, int y) {
         position = new Vector2(x,y);
@@ -36,19 +35,29 @@ public class Character {
     }
     public void gravity(){
     	if(g==0){
-    		position.y += grav;
+    		position.y += GRAV;
     	}
-    	else if (g==1 && upKeyPress ==false){
-    		upKeyPress = true;
-    		position.y -= grav;
-    		for(time=500; time>0; time--){
-    			
-    		}
-    		if(time == 0){
-    			upKeyPress = false;
-    			g=0;
-    		}
-    		
-    	}	
+    	else if (g==1){
+    		position.y -= JUMP;
+    		 Thread timer = new Thread(){
+    		        @Override
+    		        public void run() {
+    		        	
+    		            try {
+    		                sleep(SLEEP);//time in milliseconds
+    		            } catch (InterruptedException e) {
+    		                
+    		                e.printStackTrace();
+    		            } finally{
+    		                
+    		            	g=0;
+    		            }
+    		            
+    		        }
+    		    };
+    		    timer.start();
+    
+    	}
+    	
     }
 }
