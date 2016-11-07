@@ -10,7 +10,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class MountainClimberGame extends Game {
 	public static SpriteBatch batch;
 	public static final int HEIGHT = 600;
-    public static final int WIDTH = 800;
+    public static final int WIDTH = 1000;
 	 
     @Override
     public void create () {

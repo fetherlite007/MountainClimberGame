@@ -13,7 +13,7 @@ public class WorldRenderer {
 	private Texture characterImg;
 	private Character character;
 	private LevelRenderer levelrenderer;
-	public static final int BLOCK_SIZE = 40;
+	public static final int BLOCK_SIZE = 50;
 	
 	public WorldRenderer(MountainClimberGame mountainclimbergame, World world) {
         this.mountainclimbergame = mountainclimbergame;
