@@ -6,27 +6,31 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class LevelRenderer {
 		private Level level;
 	    private SpriteBatch batch;
-	    private Texture floorImg;
-	    private Texture skyImg;
+	    private Texture rockImg;
+	    private Texture itemImg;
+	    private Texture bgImg;
 	    
 	    public LevelRenderer(SpriteBatch batch, Level level) {
 	        this.level = level;
 	        this.batch = batch;
-	        floorImg = new Texture("floor01.png");
-	        skyImg = new Texture("sky01.png");
+	        rockImg = new Texture("rock01.png");
+	        itemImg = new Texture("key01.png");
+	        bgImg = new Texture("grass01.jpg");
+	        
 	    }
 	 
 	    public void render() {
 	        batch.begin();
+	        batch.draw(bgImg,0,0);
 	        for(int r = 0; r < level.getHeight(); r++) {
 	            for(int c = 0; c < level.getWidth(); c++) {
 	                int x = c * WorldRenderer.BLOCK_SIZE;
 	                int y = MountainClimberGame.HEIGHT - (r * WorldRenderer.BLOCK_SIZE) - WorldRenderer.BLOCK_SIZE;
 	 
-	                if(level.hasFloorAt(r, c)) {
-	                    batch.draw(floorImg, x, y);
-	                } else if(level.hasSkyAt(r, c)) {
-	                    batch.draw(skyImg, x, y);
+	                if(level.hasRockAt(r, c)) {
+	                    batch.draw(rockImg, x, y);
+	                } else if(level.hasItemAt(r, c)) {
+	                    batch.draw(itemImg, x, y);
 	                }
 	            }
 	        }

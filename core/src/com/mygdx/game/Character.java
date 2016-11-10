@@ -3,7 +3,6 @@ package com.mygdx.game;
 import com.badlogic.gdx.math.Vector2;
 
 public class Character {
-	public static int g = 0;
 	public static Vector2 position;
 	public static final int DIRECTION_UP = 1;
     public static final int DIRECTION_RIGHT = 2;
@@ -17,13 +16,21 @@ public class Character {
         {0,1},
         {-1,0}
     };
-    public static final int SPEED = 4;
-    public static final int GRAV = 4;
-    public static final int JUMP = 5;
-    public static final int SLEEP = 500;
+    public static final int SPEED = 5;
+    private int currentDirection;
+    private int nextDirection;
+    private World world;
+
+
     
-    public Character(int x, int y) {
+    
+    public Character(int x, int y, World world) {
         position = new Vector2(x,y);
+        
+        currentDirection = DIRECTION_STILL;
+        nextDirection = DIRECTION_STILL;
+        this.world = world;
+
         
     }    
  
@@ -32,32 +39,53 @@ public class Character {
     }
     public void move(int dir) { 
     	position.x += SPEED * DIR_OFFSETS[dir][0];   
+    	position.y += SPEED * DIR_OFFSETS[dir][1];
     }
-    public void gravity(){
-    	if(g==0){
-    		position.y += GRAV;
-    	}
-    	else if (g==1){
-    		position.y -= JUMP;
-    		 Thread timer = new Thread(){
-    		        @Override
-    		        public void run() {
-    		        	
-    		            try {
-    		                sleep(SLEEP);//time in milliseconds
-    		            } catch (InterruptedException e) {
-    		                
-    		                e.printStackTrace();
-    		            } finally{
-    		                
-    		            	g=0;
-    		            }
-    		            
-    		        }
-    		    };
-    		    timer.start();
-    
-    	}
-    	
+    public void setNextDirection(int dir) {
+        nextDirection = dir;
     }
+    public void update() {
+    	Level level = world.getLevel();
+        if(isAtCenter()) {
+        	if(level.hasItemAt(getRow(), getColumn()))
+        	{
+        		level.removeItemAt(getRow(), getColumn());
+        	}
+            if(canMoveInDirection(nextDirection)) {
+                currentDirection = nextDirection;    
+            } else {
+                currentDirection = DIRECTION_STILL;    
+            }
+        }
+        position.x += SPEED * DIR_OFFSETS[currentDirection][0];
+        position.y += SPEED * DIR_OFFSETS[currentDirection][1];
+    }
+    public boolean isAtCenter() {
+        int blockSize = WorldRenderer.BLOCK_SIZE;
+ 
+        return ((((int)position.x - blockSize/2) % blockSize) == 0) &&
+                ((((int)position.y - blockSize/2) % blockSize) == 0);
+    }
+    private boolean canMoveInDirection(int dir) 
+    {
+    	Level level = world.getLevel();
+    	int newRow = getRow()+DIR_OFFSETS[dir][1];
+    	int newCol = getColumn()+DIR_OFFSETS[dir][0];
+    	if(level.hasRockAt(newRow, newCol))
+    	{
+    		return false;
+    	}
+    	else
+    	{
+    		return true;
+    	}
+    }
+    private int getRow() {
+        return ((int)position.y) / WorldRenderer.BLOCK_SIZE; 
+    }
+ 
+    private int getColumn() {
+        return ((int)position.x) / WorldRenderer.BLOCK_SIZE; 
+    }
+
 }

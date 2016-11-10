@@ -13,7 +13,7 @@ public class WorldRenderer {
 	private Texture characterImg;
 	private Character character;
 	private LevelRenderer levelrenderer;
-	public static final int BLOCK_SIZE = 50;
+	public static final int BLOCK_SIZE = 40;
 	
 	public WorldRenderer(MountainClimberGame mountainclimbergame, World world) {
         this.mountainclimbergame = mountainclimbergame;
@@ -23,7 +23,6 @@ public class WorldRenderer {
         character = world.getCharacter();
  
         characterImg = new Texture("character01.png");
-        
         levelrenderer = new LevelRenderer(mountainclimbergame.batch, world.getLevel());
     }
 	public void render(float delta) {
@@ -32,6 +31,8 @@ public class WorldRenderer {
 		 batch.begin();
 	     Vector2 pos = world.getCharacter().getPosition();
 	     batch.draw(characterImg, pos.x - BLOCK_SIZE/2, MountainClimberGame.HEIGHT - pos.y - BLOCK_SIZE/2);
+	    
+	     
 	     batch.end();
 	}
 }

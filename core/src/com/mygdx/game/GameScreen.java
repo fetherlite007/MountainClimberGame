@@ -32,37 +32,33 @@ public class GameScreen extends ScreenAdapter {
 	@Override
 	public void render(float delta) {
 		update(delta);
-		character.gravity();
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
  
         worldrenderer.render(delta);
 	}
 	private void update(float delta) {
+		
+		updateCharacterDirection();
+		world.update(delta);
+    }
+	private void updateCharacterDirection() {
+		Character character = world.getCharacter();
 		if(Gdx.input.isKeyPressed(Keys.LEFT)) {
-            character.move(Character.DIRECTION_LEFT);
+            character.setNextDirection(Character.DIRECTION_LEFT);
 		}
-		if(Gdx.input.isKeyPressed(Keys.RIGHT)) {
-            character.move(Character.DIRECTION_RIGHT);
+		else if(Gdx.input.isKeyPressed(Keys.RIGHT)) {
+            character.setNextDirection(Character.DIRECTION_RIGHT);
 		}
-		if(Gdx.input.isKeyPressed(Keys.UP)&&character.g==0) {
-            character.g=1;
-            Thread timer = new Thread(){
-		        @Override
-		        public void run() {
-		        	
-		            try {
-		                sleep(5000);//time in milliseconds
-		            } catch (InterruptedException e) {
-		                
-		                e.printStackTrace();
-		            } finally{
-		              
-		            }
-		            
-		        }
-		    };
-		    timer.start();
+		else if(Gdx.input.isKeyPressed(Keys.UP)) {
+			character.setNextDirection(Character.DIRECTION_UP);
+        }
+		else if(Gdx.input.isKeyPressed(Keys.DOWN)) {
+            character.setNextDirection(Character.DIRECTION_DOWN);
+		}
+		else 
+		{
+			character.setNextDirection(character.DIRECTION_STILL);
 		}
     }
 

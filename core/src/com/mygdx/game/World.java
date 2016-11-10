@@ -5,11 +5,10 @@ public class World {
     private MountainClimberGame mountainclimbergame;
     private Level level;
  
-    World(MountainClimberGame mountainclimbergame) {
-        this.mountainclimbergame = mountainclimbergame;
- 
-        character = new Character(60,60);
+    World(MountainClimberGame mountainclimbergame) {      
         level = new Level();
+        character = new Character(60,60,this);
+        this.mountainclimbergame = mountainclimbergame;
     }
  
     Character getCharacter() {
@@ -18,5 +17,8 @@ public class World {
     
     Level getLevel(){
     	return level;
+    }
+    public void update(float delta) {
+        character.update();
     }
 }
