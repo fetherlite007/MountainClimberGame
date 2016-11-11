@@ -20,30 +20,27 @@ public class Character {
     private int currentDirection;
     private int nextDirection;
     private World world;
-
-
-    
     
     public Character(int x, int y, World world) {
         position = new Vector2(x,y);
-        
         currentDirection = DIRECTION_STILL;
         nextDirection = DIRECTION_STILL;
         this.world = world;
-
-        
     }    
  
     public Vector2 getPosition() {
         return position;    
     }
+    
     public void move(int dir) { 
     	position.x += SPEED * DIR_OFFSETS[dir][0];   
     	position.y += SPEED * DIR_OFFSETS[dir][1];
     }
+    
     public void setNextDirection(int dir) {
         nextDirection = dir;
     }
+    
     public void update() {
     	Level level = world.getLevel();
         if(isAtCenter()) {
@@ -60,12 +57,14 @@ public class Character {
         position.x += SPEED * DIR_OFFSETS[currentDirection][0];
         position.y += SPEED * DIR_OFFSETS[currentDirection][1];
     }
+    
     public boolean isAtCenter() {
         int blockSize = WorldRenderer.BLOCK_SIZE;
  
         return ((((int)position.x - blockSize/2) % blockSize) == 0) &&
                 ((((int)position.y - blockSize/2) % blockSize) == 0);
     }
+    
     private boolean canMoveInDirection(int dir) 
     {
     	Level level = world.getLevel();
@@ -80,6 +79,7 @@ public class Character {
     		return true;
     	}
     }
+    
     private int getRow() {
         return ((int)position.y) / WorldRenderer.BLOCK_SIZE; 
     }

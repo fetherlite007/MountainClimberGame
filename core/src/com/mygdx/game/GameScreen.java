@@ -9,7 +9,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
  
 public class GameScreen extends ScreenAdapter {
-	
 	private MountainClimberGame mountainclimbergame;
 	private Texture characterImg;
 	private Character character;
@@ -27,8 +26,6 @@ public class GameScreen extends ScreenAdapter {
 		worldrenderer = new WorldRenderer(mountainclimbergame ,world);
 	}
 	
-	
-	
 	@Override
 	public void render(float delta) {
 		update(delta);
@@ -37,11 +34,13 @@ public class GameScreen extends ScreenAdapter {
  
         worldrenderer.render(delta);
 	}
+	
 	private void update(float delta) {
 		
 		updateCharacterDirection();
 		world.update(delta);
     }
+	
 	private void updateCharacterDirection() {
 		Character character = world.getCharacter();
 		if(Gdx.input.isKeyPressed(Keys.LEFT)) {

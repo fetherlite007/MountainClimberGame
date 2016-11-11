@@ -18,21 +18,19 @@ public class WorldRenderer {
 	public WorldRenderer(MountainClimberGame mountainclimbergame, World world) {
         this.mountainclimbergame = mountainclimbergame;
         batch = mountainclimbergame.batch;
- 
         this.world = world;
         character = world.getCharacter();
- 
         characterImg = new Texture("character01.png");
         levelrenderer = new LevelRenderer(mountainclimbergame.batch, world.getLevel());
     }
+	
 	public void render(float delta) {
 		levelrenderer.render();
 		SpriteBatch batch = MountainClimberGame.batch;
-		 batch.begin();
-	     Vector2 pos = world.getCharacter().getPosition();
-	     batch.draw(characterImg, pos.x - BLOCK_SIZE/2, MountainClimberGame.HEIGHT - pos.y - BLOCK_SIZE/2);
-	    
-	     
-	     batch.end();
+		batch.begin();
+	    Vector2 pos = world.getCharacter().getPosition();
+	    batch.draw(characterImg, pos.x - BLOCK_SIZE/2, 
+	    		MountainClimberGame.HEIGHT - pos.y - BLOCK_SIZE/2);
+	    batch.end();
 	}
 }

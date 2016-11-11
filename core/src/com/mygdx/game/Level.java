@@ -23,8 +23,6 @@ public class Level {
             "#                       #",
             "#########################"    
     };
-	
-
 	private int height;
 	private int width;
 	private boolean [][] hasItem;
@@ -32,15 +30,17 @@ public class Level {
 	public Level() {
         height = MAP.length;
         width = MAP[0].length();
-        initItemData();
-       
+        initItemData();   
     }
+	
     public int getHeight() {
         return height;
     }
+    
     public int getWidth() {
         return width;
     }
+    
     public boolean hasRockAt(int r, int c) {
         return MAP[r].charAt(c) == '#';
     }
@@ -48,6 +48,7 @@ public class Level {
     public boolean hasItemAt(int r, int c) {
     	return hasItem[r][c];
     }
+    
     private void initItemData() {
     	hasItem = new boolean[height][width];
         for(int r = 0; r < height; r++) {
@@ -56,6 +57,7 @@ public class Level {
             }
         }
     }
+    
     public void removeItemAt(int r, int c) {
         hasItem[r][c] = false;
     }

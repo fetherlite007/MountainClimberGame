@@ -18,6 +18,7 @@ public class World {
     Level getLevel(){
     	return level;
     }
+    
     public void update(float delta) {
         character.update();
     }
