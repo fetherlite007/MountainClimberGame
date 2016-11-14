@@ -14,6 +14,7 @@ public class GameScreen extends ScreenAdapter {
 	private Character character;
 	World world;
 	private WorldRenderer worldrenderer;
+	private Level level;
 	
 	public GameScreen(MountainClimberGame mountainclimbergame){
 		this.mountainclimbergame = mountainclimbergame;
@@ -36,7 +37,8 @@ public class GameScreen extends ScreenAdapter {
 	}
 	
 	private void update(float delta) {
-		
+		checkDeadStat();
+		checkWonStat();
 		updateCharacterDirection();
 		world.update(delta);
     }
@@ -60,5 +62,17 @@ public class GameScreen extends ScreenAdapter {
 			character.setNextDirection(character.DIRECTION_STILL);
 		}
     }
-
+	
+	private void checkDeadStat() {
+		if (level.deadStat==1){
+			mountainclimbergame.setScreen(new GameOverScreen(mountainclimbergame));
+		}
+	}
+	
+	private void checkWonStat() {
+		if (level.wonStat==1){
+			mountainclimbergame.setScreen(new EndScreen(mountainclimbergame));
+			
+		}
+	}
 }

@@ -48,6 +48,14 @@ public class Character {
         	{
         		level.removeItemAt(getRow(), getColumn());
         	}
+        	if(level.hasTrap01At(getRow(), getColumn()))
+        	{
+        		level.deadAt(getRow(), getColumn());
+        	}
+        	if(level.hasExitAt(getRow(), getColumn()))
+        	{
+        		level.endAt(getRow(), getColumn());
+        	}
             if(canMoveInDirection(nextDirection)) {
                 currentDirection = nextDirection;    
             } else {

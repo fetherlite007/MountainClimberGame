@@ -9,6 +9,9 @@ public class LevelRenderer {
     private Texture rockImg;
     private Texture itemImg;
     private Texture bgImg;
+    private Texture trap01Img;
+    private Texture exitImg;
+    
     
     public LevelRenderer(SpriteBatch batch, Level level) {
         this.level = level;
@@ -16,6 +19,8 @@ public class LevelRenderer {
         rockImg = new Texture("rock01.png");
         itemImg = new Texture("key01.png");
         bgImg = new Texture("grass01.jpg");
+        trap01Img = new Texture("trap01.png");
+        exitImg = new Texture("trap01.png");
         
     }
  
@@ -31,6 +36,10 @@ public class LevelRenderer {
                     batch.draw(rockImg, x, y);
                 } else if(level.hasItemAt(r, c)) {
                     batch.draw(itemImg, x, y);
+                } else if(level.hasTrap01At(r, c)) {
+                    batch.draw(trap01Img, x, y);
+                } else if(level.hasExitAt(r, c)) {
+                    batch.draw(exitImg, x, y);
                 }
             }
         }
