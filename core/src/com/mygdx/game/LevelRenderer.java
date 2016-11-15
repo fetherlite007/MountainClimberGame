@@ -10,6 +10,11 @@ public class LevelRenderer {
     private Texture itemImg;
     private Texture bgImg;
     private Texture trap01Img;
+    private Texture trap02Img;
+    private Texture trap03Img;
+    private Texture trap04Img;
+    private Texture trap05Img;
+    private Texture trap06Img;
     private Texture exitImg;
     
     
@@ -20,7 +25,12 @@ public class LevelRenderer {
         itemImg = new Texture("key01.png");
         bgImg = new Texture("grass01.jpg");
         trap01Img = new Texture("trap01.png");
-        exitImg = new Texture("trap01.png");
+        trap02Img = new Texture("trap02.png");
+        trap03Img = new Texture("trap03.png");
+        trap04Img = new Texture("trap04.png");
+        trap05Img = new Texture("trap05.png");
+        trap06Img = new Texture("trap06.png");
+        exitImg = new Texture("exit01.png");
         
     }
  
@@ -38,6 +48,16 @@ public class LevelRenderer {
                     batch.draw(itemImg, x, y);
                 } else if(level.hasTrap01At(r, c)) {
                     batch.draw(trap01Img, x, y);
+                } else if(level.hasTrap02At(r, c)) {
+                    batch.draw(trap02Img, x, y);
+                } else if(level.hasTrap03At(r, c)) {
+                    batch.draw(trap03Img, x, y);
+                } else if(level.hasTrap04At(r, c)) {
+                    batch.draw(trap04Img, x, y);
+                } else if(level.hasTrap05At(r, c)) {
+                    batch.draw(trap05Img, x, y);
+                } else if(level.hasTrap06At(r, c)) {
+                    batch.draw(trap06Img, x, y);
                 } else if(level.hasExitAt(r, c)) {
                     batch.draw(exitImg, x, y);
                 }

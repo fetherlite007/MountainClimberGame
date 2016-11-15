@@ -52,6 +52,26 @@ public class Character {
         	{
         		level.deadAt(getRow(), getColumn());
         	}
+        	if(level.hasTrap02At(getRow(), getColumn()))
+        	{
+        		level.deadAt(getRow(), getColumn());
+        	}
+        	if(level.hasTrap03At(getRow(), getColumn()))
+        	{
+        		position.x += 40;
+        	}
+        	if(level.hasTrap04At(getRow(), getColumn()))
+        	{
+        		position.y -= 40;
+        	}
+        	if(level.hasTrap05At(getRow(), getColumn()))
+        	{
+        		position.x -= 40;
+        	}
+        	if(level.hasTrap06At(getRow(), getColumn()))
+        	{
+        		position.y += 40;
+        	}
         	if(level.hasExitAt(getRow(), getColumn()))
         	{
         		level.endAt(getRow(), getColumn());
