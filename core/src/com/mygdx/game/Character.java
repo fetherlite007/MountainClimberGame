@@ -20,6 +20,7 @@ public class Character {
     private int currentDirection;
     private int nextDirection;
     private World world;
+    public int canMove = 1;
     
     public Character(int x, int y, World world) {
         position = new Vector2(x,y);
@@ -58,28 +59,33 @@ public class Character {
         	}
         	if(level.hasTrap03At(getRow(), getColumn()))
         	{
+        		canMove = 0;
         		position.x += 40;
         	}
         	if(level.hasTrap04At(getRow(), getColumn()))
         	{
+        		canMove = 0;
         		position.y -= 40;
         	}
         	if(level.hasTrap05At(getRow(), getColumn()))
         	{
+        		canMove = 0;
         		position.x -= 40;
         	}
         	if(level.hasTrap06At(getRow(), getColumn()))
         	{
+        		canMove = 0;
         		position.y += 40;
         	}
         	if(level.hasExitAt(getRow(), getColumn()))
         	{
         		level.endAt(getRow(), getColumn());
         	}
-            if(canMoveInDirection(nextDirection)) {
+            if(canMoveInDirection(nextDirection)&&canMove ==1) {
                 currentDirection = nextDirection;    
             } else {
-                currentDirection = DIRECTION_STILL;    
+                currentDirection = DIRECTION_STILL;   
+                canMove = 1;
             }
         }
         position.x += SPEED * DIR_OFFSETS[currentDirection][0];

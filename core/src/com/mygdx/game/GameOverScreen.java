@@ -35,5 +35,10 @@ public class GameOverScreen extends ScreenAdapter{
 			Level.deadStat = 0;
 			bgm.stop();
 		}
+		if(Gdx.input.isKeyPressed(Keys.I)) {
+			mountainclimbergame.setScreen(new InstructionScreen(mountainclimbergame));
+			Level.deadStat = 0;
+			bgm.stop();
+		}
 	}
 }

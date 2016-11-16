@@ -29,5 +29,11 @@ public class EndScreen extends ScreenAdapter{
 			mountainclimbergame.setScreen(new GameScreen(mountainclimbergame));
 			Level.wonStat = 0;
 		}
+		if(Gdx.input.isKeyPressed(Keys.I)) {
+			mountainclimbergame.setScreen(new InstructionScreen(mountainclimbergame));
+			Level.wonStat = 0;
+		}
+			
+		
 	}
 }

@@ -10,7 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.List;
 public class Level {
 	private String[] MAP = new String [] {
             "#########################",
-            "# d      X       .    e #",
+            "# ddd dddX       .    e #",
             "#  w       e            #",
             "#    X                  #",
             "# s          X          #",
