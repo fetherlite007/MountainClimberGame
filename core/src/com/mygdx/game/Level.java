@@ -8,23 +8,75 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.ui.List;
 
 public class Level {
-	private String[] MAP = new String [] {
+	public String[] MAP2 = new String [] {
             "#########################",
-            "# ddd dddX       .    e #",
-            "#  w       e            #",
-            "#    X                  #",
-            "# s          X          #",
-            "#   a                   #",
-            "# .              X      #",
-            "#                       #",
-            "#                       #",
-            "#        X              #",
-            "#     e          e      #",
-            "#                       #",
-            "#e         e            #",
-            "#    .             X   E#",
+            "# ddddX.aaae.  X      EX#",
+            "# w###wa d   w    sddddw#",
+            "#d dXaw  # w X  #Xdw#####",
+            "##s##w  X#dd X  ###w#####",
+            "##s#X   X#w# w  #sa dddX#",
+            "#X.     X#w#  ss#Xa dddw#",
+            "#.s##  saa d #  #  wdd .#",
+            "#wX## #s#    #      #d  #",
+            "#wa   #.#X d #      #wd #",
+            "##### de#dw  #    dX#wd #",
+            "#saaaswdd s  ########wd #",
+            "#e  a dwX#ds######ddd dw#",
+            "#Xaaa.dddX#ddddddd Xw####",
             "#########################"    
     };
+	public String[] MAP3 = new String [] {
+            "#########################",
+            "#  Xe#####X.. #saa.dd  .#",   
+            "#swXw    a a  a dXw w   #",
+            "# dXa ...w####w X.wa ddX#",
+            "#ssX####s#dddXw #s## dss#",
+            "#  XEeaaa#w##ww #.## #. #",
+            "#dsX##w###.dd X X ## d  #",
+            "#   d  d #w##se dX## #  #",
+            "#sdX##s            # #ds#",
+            "#. X.a #X#s##s Es# # #Es#",
+            "#  X##s#wa e.ass   #   s#",
+            "#ddX.a s#ss Xw s## # #Es#",
+            "#. a dsa   eX# ddd d ##X#",
+            "#  X#Xa#   .X# ddd.e d .#",
+            "#########################"    
+    };
+	public String[] MAP1 = new String [] {
+            "#########################",
+            "# Xd.#d.X#e  dddddX#   .#",
+            "#   d  dX#.  X######  aas#",
+            "#XXs##d E#ws   d     as.#",
+            "#waa#e#ssa  ddddddddddd #",
+            "####Ew# dX####.##  ####X#",
+            "#.X##.#sdw#   w .wsddddw#",
+            "#waa w# ww#w # ws.dw#.ew#",
+            "#waa    X   X#  X  X#   #",
+            "##### # w X e      wEwws#",
+            "#s. a d d X   E     d   #",
+            "#s#s#s###wwwww# ssX##e. #",
+            "#e..#.ds#dddsa  sd   #X##",
+            "#waa#Xaa#X.  a ddddX.d E#",
+            "#########################"    
+    };
+	public String[] MAP4 = new String [] {
+            "#########################",
+            "# dddsdddddddddddddddddX#",
+            "# d Xdws#e#   X   d  EdX#",
+            "# .#Xwdds##   w#Xd ddddX#",
+            "# d  sdX d.dsa dww##ddsX#",
+            "# .#dXwaa   ddwdd d. dde#",
+            "#sddd X w  ddddddddddssX#",
+            "#.dX#Eddddd ds d w.#EXdX#",
+            "# d.#X ####sa.d     dddX#",
+            "# dX#X .. a dsX .  d dsX#",
+            "# d #X     sXXa.E.d dsdE#",
+            "# d ###d dd wXa#wXddddsX#",
+            "# d #X#ws#Xd d d d.. ssX#",
+            "# d  w#X.#X e a w#Xa ddX#",
+            "#########################"    
+    };
+	public String[] MAP;
 	private int height;
 	private int width;
 	private boolean [][] hasItem;
@@ -40,8 +92,10 @@ public class Level {
 	public static int itemCount = 0;
 	public static int wonStat = 0;
 	public static int maxItemCount = 3;
+	private LevelSelectScreen levelselectscreen;
 	
 	public Level() {
+		levelSelected();
         height = MAP.length;
         width = MAP[0].length();
         initItemData();
@@ -54,6 +108,17 @@ public class Level {
         initExitData();
         
     }
+	public void levelSelected(){
+		if(levelselectscreen.mapNumber == 1){
+			MAP = MAP1;
+		} else if(levelselectscreen.mapNumber == 2){
+			MAP = MAP2;
+		} else if(levelselectscreen.mapNumber == 3){
+			MAP = MAP3;
+		} else if(levelselectscreen.mapNumber == 4){
+			MAP = MAP4;
+		}
+	}
 	
     public int getHeight() {
         return height;

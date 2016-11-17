@@ -1,5 +1,7 @@
 package com.mygdx.game;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.math.Vector2;
 
 public class Character {
@@ -21,12 +23,15 @@ public class Character {
     private int nextDirection;
     private World world;
     public int canMove = 1;
+    private Sound slipSound;
+    
     
     public Character(int x, int y, World world) {
         position = new Vector2(x,y);
         currentDirection = DIRECTION_STILL;
         nextDirection = DIRECTION_STILL;
         this.world = world;
+		slipSound = Gdx.audio.newSound(Gdx.files.internal("slipping01.mp3"));
     }    
  
     public Vector2 getPosition() {
@@ -51,34 +56,42 @@ public class Character {
         	}
         	if(level.hasTrap01At(getRow(), getColumn()))
         	{
+        		
         		level.deadAt(getRow(), getColumn());
         	}
         	if(level.hasTrap02At(getRow(), getColumn()))
         	{
+        		
         		level.deadAt(getRow(), getColumn());
         	}
         	if(level.hasTrap03At(getRow(), getColumn()))
         	{
+        		slipSound.play();
         		canMove = 0;
         		position.x += 40;
+        		
         	}
         	if(level.hasTrap04At(getRow(), getColumn()))
         	{
+        		slipSound.play();
         		canMove = 0;
         		position.y -= 40;
         	}
         	if(level.hasTrap05At(getRow(), getColumn()))
         	{
+        		slipSound.play();
         		canMove = 0;
         		position.x -= 40;
         	}
         	if(level.hasTrap06At(getRow(), getColumn()))
         	{
+        		slipSound.play();
         		canMove = 0;
         		position.y += 40;
         	}
         	if(level.hasExitAt(getRow(), getColumn()))
         	{
+        		
         		level.endAt(getRow(), getColumn());
         	}
             if(canMoveInDirection(nextDirection)&&canMove ==1) {

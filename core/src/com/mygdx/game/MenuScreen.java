@@ -32,7 +32,7 @@ public class MenuScreen extends ScreenAdapter{
 	
 	public void update(float delta) {
 		if(Gdx.input.isKeyPressed(Keys.ENTER)) {
-			mountainclimbergame.setScreen(new GameScreen(mountainclimbergame));
+			mountainclimbergame.setScreen(new LevelSelectScreen(mountainclimbergame));
 			bgmMenu.stop();
 		}
 		if(Gdx.input.isKeyPressed(Keys.I)) {
