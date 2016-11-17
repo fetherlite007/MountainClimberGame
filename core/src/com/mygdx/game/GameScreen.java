@@ -17,6 +17,7 @@ public class GameScreen extends ScreenAdapter {
 	private WorldRenderer worldrenderer;
 	private Level level;
 	private Sound bgm;
+	private MenuScreen menuscreen;
 	
 	public GameScreen(MountainClimberGame mountainclimbergame){
 		this.mountainclimbergame = mountainclimbergame;
@@ -27,6 +28,8 @@ public class GameScreen extends ScreenAdapter {
 		character = world.getCharacter();
 		
 		worldrenderer = new WorldRenderer(mountainclimbergame ,world);
+		
+		menuscreen.bgmMenu.stop();
 		bgm = Gdx.audio.newSound(Gdx.files.internal("bgm02.mp3"));
 		bgm.loop();
         bgm.play();

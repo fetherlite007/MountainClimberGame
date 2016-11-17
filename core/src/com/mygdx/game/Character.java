@@ -24,6 +24,7 @@ public class Character {
     private World world;
     public int canMove = 1;
     private Sound slipSound;
+    private Sound pickingSound;
     
     
     public Character(int x, int y, World world) {
@@ -32,6 +33,7 @@ public class Character {
         nextDirection = DIRECTION_STILL;
         this.world = world;
 		slipSound = Gdx.audio.newSound(Gdx.files.internal("slipping01.mp3"));
+		pickingSound = Gdx.audio.newSound(Gdx.files.internal("picking01.mp3"));
     }    
  
     public Vector2 getPosition() {
@@ -52,6 +54,7 @@ public class Character {
         if(isAtCenter()) {
         	if(level.hasItemAt(getRow(), getColumn()))
         	{
+        		pickingSound.play();
         		level.removeItemAt(getRow(), getColumn());
         	}
         	if(level.hasTrap01At(getRow(), getColumn()))

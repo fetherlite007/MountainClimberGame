@@ -32,25 +32,21 @@ public class LevelSelectScreen extends ScreenAdapter{
 	public void update(float delta) {
 		if(Gdx.input.isKeyPressed(Keys.NUM_1)) {
 			mapNumber = 1;
-			menuscreen.bgmMenu.stop();
 			mountainclimbergame.setScreen(new GameScreen(mountainclimbergame));
 			
 		}
 		if(Gdx.input.isKeyPressed(Keys.NUM_2)) {
-			mapNumber = 2;
-			menuscreen.bgmMenu.stop();
+			mapNumber = 2;	
 			mountainclimbergame.setScreen(new GameScreen(mountainclimbergame));
 
 		}
 		if(Gdx.input.isKeyPressed(Keys.NUM_3)) {
 			mapNumber = 3;
-			menuscreen.bgmMenu.stop();
 			mountainclimbergame.setScreen(new GameScreen(mountainclimbergame));
 
 		}
 		if(Gdx.input.isKeyPressed(Keys.NUM_4)) {
 			mapNumber = 4;
-			menuscreen.bgmMenu.stop();
 			mountainclimbergame.setScreen(new GameScreen(mountainclimbergame));
 
 		}
