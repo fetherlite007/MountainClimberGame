@@ -71,7 +71,7 @@ public class Level {
             "# d.#X ####sa.d     dddX#",
             "# dX#X .. a dsX .  d dsX#",
             "# d #X     sXXa.E.d dsdE#",
-            "# d ###d dd wXa#wXddddsX#",
+            "# d ###d dd wXa#dXddddsX#",
             "# d #X#ws#Xd d d d.. ssX#",
             "# d  w#X.#X e a w#Xa ddX#",
             "#########################"    
