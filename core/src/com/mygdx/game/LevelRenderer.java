@@ -17,7 +17,6 @@ public class LevelRenderer {
     private Texture trap06Img;
     private Texture exitImg;
     
-    
     public LevelRenderer(SpriteBatch batch, Level level) {
         this.level = level;
         this.batch = batch;
@@ -30,8 +29,7 @@ public class LevelRenderer {
         trap04Img = new Texture("trap04.png");
         trap05Img = new Texture("trap05.png");
         trap06Img = new Texture("trap06.png");
-        exitImg = new Texture("exit01.png");
-        
+        exitImg = new Texture("exit01.png");    
     }
  
     public void render() {

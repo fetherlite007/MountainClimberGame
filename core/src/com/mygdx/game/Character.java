@@ -21,11 +21,10 @@ public class Character {
     public static final int SPEED = 5;
     private int currentDirection;
     private int nextDirection;
-    private World world;
     public int canMove = 1;
     private Sound slipSound;
     private Sound pickingSound;
-    
+    private World world;    
     
     public Character(int x, int y, World world) {
         position = new Vector2(x,y);
@@ -52,49 +51,43 @@ public class Character {
     public void update() {
     	Level level = world.getLevel();
         if(isAtCenter()) {
-        	if(level.hasItemAt(getRow(), getColumn()))
-        	{
+        	if(level.hasItemAt(getRow(), getColumn())) {
         		pickingSound.play();
         		level.removeItemAt(getRow(), getColumn());
         	}
-        	if(level.hasTrap01At(getRow(), getColumn()))
-        	{
-        		
+        	
+        	if(level.hasTrap01At(getRow(), getColumn())) {
         		level.deadAt(getRow(), getColumn());
         	}
-        	if(level.hasTrap02At(getRow(), getColumn()))
-        	{
-        		
+        	
+        	if(level.hasTrap02At(getRow(), getColumn())) {	
         		level.deadAt(getRow(), getColumn());
         	}
-        	if(level.hasTrap03At(getRow(), getColumn()))
-        	{
+       
+        	if(level.hasTrap03At(getRow(), getColumn())) {
         		slipSound.play();
         		canMove = 0;
-        		position.x += 40;
-        		
+        		position.x += 40; 		
         	}
-        	if(level.hasTrap04At(getRow(), getColumn()))
-        	{
+        	
+        	if(level.hasTrap04At(getRow(), getColumn())) {
         		slipSound.play();
         		canMove = 0;
         		position.y -= 40;
         	}
-        	if(level.hasTrap05At(getRow(), getColumn()))
-        	{
+        	
+        	if(level.hasTrap05At(getRow(), getColumn())) {
         		slipSound.play();
         		canMove = 0;
         		position.x -= 40;
         	}
-        	if(level.hasTrap06At(getRow(), getColumn()))
-        	{
+        	
+        	if(level.hasTrap06At(getRow(), getColumn())) {
         		slipSound.play();
         		canMove = 0;
         		position.y += 40;
         	}
-        	if(level.hasExitAt(getRow(), getColumn()))
-        	{
-        		
+        	if(level.hasExitAt(getRow(), getColumn())) {
         		level.endAt(getRow(), getColumn());
         	}
             if(canMoveInDirection(nextDirection)&&canMove ==1) {
@@ -110,7 +103,6 @@ public class Character {
     
     public boolean isAtCenter() {
         int blockSize = WorldRenderer.BLOCK_SIZE;
- 
         return ((((int)position.x - blockSize/2) % blockSize) == 0) &&
                 ((((int)position.y - blockSize/2) % blockSize) == 0);
     }
@@ -123,9 +115,7 @@ public class Character {
     	if(level.hasRockAt(newRow, newCol))
     	{
     		return false;
-    	}
-    	else
-    	{
+    	} else {
     		return true;
     	}
     }
@@ -137,5 +127,4 @@ public class Character {
     private int getColumn() {
         return ((int)position.x) / WorldRenderer.BLOCK_SIZE; 
     }
-
 }

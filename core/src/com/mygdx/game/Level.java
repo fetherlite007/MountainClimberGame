@@ -25,8 +25,8 @@ public class Level {
             "#Xaaa.dddX#ddddddd Xw####",
             "#########################"    
     };
-	public String[] MAP3 = new String [] {
-            "#########################",
+	public String[] MAP1 = new String [] {
+			"#########################",
             "#  Xe#####X.. #saa.dd  .#",   
             "#swXw    a a  a dXw w   #",
             "# dXa ...w####w X.wa ddX#",
@@ -39,10 +39,10 @@ public class Level {
             "#  X##s#wa e.ass   #   s#",
             "#ddX.a s#ss Xw s## # #Es#",
             "#. a dsa   eX# ddd d ##X#",
-            "#  X#Xa#   .X# ddd.e d .#",
+            "#  X#Xa#   .X#.ddd.e d .#",
             "#########################"    
     };
-	public String[] MAP1 = new String [] {
+	public String[] MAP3 = new String [] {
             "#########################",
             "# Xd.#d.X#e  dddddX#   .#",
             "#   d  dX#.  X######  aas#",
@@ -87,12 +87,12 @@ public class Level {
 	private boolean [][] hasTrap05;
 	private boolean [][] hasTrap06;
 	private boolean [][] hasExit;
-	public static int deadStat = 0;
 	private MountainClimberGame mountainclimbergame;
+	private LevelSelectScreen levelselectscreen;
 	public static int itemCount = 0;
 	public static int wonStat = 0;
 	public static int maxItemCount = 3;
-	private LevelSelectScreen levelselectscreen;
+	public static int deadStat = 0;
 	
 	public Level() {
 		levelSelected();
@@ -106,8 +106,8 @@ public class Level {
         initTrap5Data();
         initTrap6Data();
         initExitData();
-        
     }
+	
 	public void levelSelected(){
 		if(levelselectscreen.mapNumber == 1){
 			MAP = MAP1;
@@ -238,12 +238,10 @@ public class Level {
     public void removeItemAt(int r, int c) {
     	itemCount++;
         hasItem[r][c] = false;
-       
     }
     
     public void deadAt(int r, int c) {
     	deadStat = 1;
-    	
     }
     
     public void endAt(int r, int c){
@@ -251,6 +249,4 @@ public class Level {
     		wonStat = 1;
     	}
     }
-    
-    
 }

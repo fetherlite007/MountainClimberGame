@@ -13,22 +13,18 @@ public class GameScreen extends ScreenAdapter {
 	private MountainClimberGame mountainclimbergame;
 	private Texture characterImg;
 	private Character character;
-	World world;
 	private WorldRenderer worldrenderer;
 	private Level level;
 	private Sound bgm;
 	private MenuScreen menuscreen;
+	World world;
 	
 	public GameScreen(MountainClimberGame mountainclimbergame){
 		this.mountainclimbergame = mountainclimbergame;
-		
 		characterImg = new Texture("character01.png");
-		
 		world = new World(mountainclimbergame);
 		character = world.getCharacter();
-		
 		worldrenderer = new WorldRenderer(mountainclimbergame ,world);
-		
 		menuscreen.bgmMenu.stop();
 		bgm = Gdx.audio.newSound(Gdx.files.internal("bgm02.mp3"));
 		bgm.loop();
@@ -40,7 +36,6 @@ public class GameScreen extends ScreenAdapter {
 		update(delta);
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
- 
         worldrenderer.render(delta);
 	}
 	
@@ -65,8 +60,7 @@ public class GameScreen extends ScreenAdapter {
 		else if(Gdx.input.isKeyPressed(Keys.DOWN)) {
             character.setNextDirection(Character.DIRECTION_DOWN);
 		}
-		else 
-		{
+		else {
 			character.setNextDirection(character.DIRECTION_STILL);
 		}
     }
@@ -84,7 +78,6 @@ public class GameScreen extends ScreenAdapter {
 			level.itemCount = 0;
 			mountainclimbergame.setScreen(new EndScreen(mountainclimbergame));
 			bgm.stop();
-			
 		}
 	}
 }

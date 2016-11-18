@@ -30,7 +30,6 @@ public class InstructionScreen extends ScreenAdapter{
 	public void update(float delta) {
 		if(Gdx.input.isKeyPressed(Keys.ENTER)) {
 			mountainclimbergame.setScreen(new LevelSelectScreen(mountainclimbergame));
-			
 		}
 	}
 }

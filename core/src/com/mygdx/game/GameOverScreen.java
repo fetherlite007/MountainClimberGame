@@ -17,7 +17,6 @@ public class GameOverScreen extends ScreenAdapter{
 		this.mountainclimbergame = mountainclimbergame;
 		batch = mountainclimbergame.batch;
 		gameoverImg = new Texture("gameover01.png");
-		
 		bgm = Gdx.audio.newSound(Gdx.files.internal("falling01.mp3"));
         bgm.play();
 	}
@@ -35,6 +34,7 @@ public class GameOverScreen extends ScreenAdapter{
 			Level.deadStat = 0;
 			bgm.stop();
 		}
+		
 		if(Gdx.input.isKeyPressed(Keys.I)) {
 			mountainclimbergame.setScreen(new InstructionScreen(mountainclimbergame));
 			Level.deadStat = 0;

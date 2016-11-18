@@ -13,8 +13,8 @@ public class LevelSelectScreen extends ScreenAdapter{
 	private SpriteBatch batch;
 	private Sound bgm;
 	private MenuScreen menuscreen;
-	public static int mapNumber;
 	private Level level;
+	public static int mapNumber;
 	
 	public LevelSelectScreen(MountainClimberGame mountainclimbergame) {
 		this.mountainclimbergame = mountainclimbergame;
@@ -33,22 +33,18 @@ public class LevelSelectScreen extends ScreenAdapter{
 		if(Gdx.input.isKeyPressed(Keys.NUM_1)) {
 			mapNumber = 1;
 			mountainclimbergame.setScreen(new GameScreen(mountainclimbergame));
-			
 		}
 		if(Gdx.input.isKeyPressed(Keys.NUM_2)) {
 			mapNumber = 2;	
 			mountainclimbergame.setScreen(new GameScreen(mountainclimbergame));
-
 		}
 		if(Gdx.input.isKeyPressed(Keys.NUM_3)) {
 			mapNumber = 3;
 			mountainclimbergame.setScreen(new GameScreen(mountainclimbergame));
-
 		}
 		if(Gdx.input.isKeyPressed(Keys.NUM_4)) {
 			mapNumber = 4;
 			mountainclimbergame.setScreen(new GameScreen(mountainclimbergame));
-
 		}
 	}
 }

@@ -18,7 +18,6 @@ public class EndScreen extends ScreenAdapter{
 		this.mountainclimbergame = mountainclimbergame;
 		batch = mountainclimbergame.batch;
 		endImg = new Texture("end01.png");
-		
 		bgm = Gdx.audio.newSound(Gdx.files.internal("ending01.mp3"));
         bgm.play();
 	}
@@ -35,18 +34,17 @@ public class EndScreen extends ScreenAdapter{
 			levelselectscreen.mapNumber++;
 			if(levelselectscreen.mapNumber == 5){
 				levelselectscreen.mapNumber = 1;
-				mountainclimbergame.setScreen(new MenuScreen(mountainclimbergame));
 			}
+	
 			mountainclimbergame.setScreen(new GameScreen(mountainclimbergame));
 			Level.wonStat = 0;
 			bgm.stop();
 		}
+		
 		if(Gdx.input.isKeyPressed(Keys.I)) {
 			mountainclimbergame.setScreen(new InstructionScreen(mountainclimbergame));
 			Level.wonStat = 0;
 			bgm.stop();
 		}
-			
-		
 	}
 }
